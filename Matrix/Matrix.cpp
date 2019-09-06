@@ -6,8 +6,66 @@ using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    cout << "Enter size of matrix A(a,b): ";
+	int matrixa[10][10];
+	int matrixb[10][10];
+	int matrixc[10][10];
+	int a, b, c, d;
+	char sign;
+	cin >> a >> sign >> b;
+	cout << "Enter size of matrix B(a,b): ";
+	cin >> c >> sign >> d;
+	if (b != c)
+		exit(0);
+	for (int i = 0; i < a; i++)
+	{
+		for (int k = 0; k < b; k++)
+		{
+			cout << "Enter number " << i + 1 << k + 1 << " in matrix A: ";
+			cin >> matrixa[i][k];
+		}
+	}
+	for (int i = 0; i < c; i++)
+	{
+		for (int k = 0; k < d; k++)
+		{
+			cout << "Enter number " << i + 1 << k + 1 << " in matrix B: ";
+			cin >> matrixb[i][k];
+		}
+	}
+
+	for (int i = 0; i < a; i++)
+	{
+		for (int k = 0; k < d; k++)
+		{
+			matrixc[i][k] = 0;
+			for (int l = 0; l < b; l++)
+			{
+				matrixc[i][k] += (matrixa[i][l] * matrixb[l][k]);
+			}
+		}
+	}
+	for (int i = 0; i < a; i++)
+	{
+		for (int k = 0; k < d; k++)
+		{
+			cout << matrixc[i][k] << " ";
+		}
+		cout << endl;
+	}
+	return 0;
 }
+
+/*class matrix
+{
+public:
+	matrix();
+	~matrix();
+
+private:
+
+};*/
+
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
