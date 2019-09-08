@@ -31,6 +31,11 @@ public:
 		}
 	}
 	matrix operator* (matrix B) {
+		if (s2!=B.s1)
+		{
+			cout << "Operation is incorrect!\n";
+			exit(0);
+		}
 		matrix C;
 		for (int i = 0; i < s1; i++)
 		{
@@ -44,9 +49,28 @@ public:
 			}
 		}
 		C.s1 = s1;
-		C.s2 = s2;
+		C.s2 = B.s2;
 		return C;
 
+	}
+
+	matrix operator+ (matrix B) {
+		if (s1!=B.s1 || s2!=B.s2)
+		{
+			cout << "Problem with adding. You can`t add two these matrix!\n";
+			exit(0);
+		}
+		matrix C;
+		C.s1 = s1;
+		C.s2 = s2;
+		for (int i = 0; i < s1; i++)
+		{
+			for (int k = 0; k < s2; k++)
+			{
+				C.matrix1[i][k] = matrix1[i][k] + B.matrix1[i][k];
+			}
+		}
+		return C;
 	}
 
 private:
@@ -60,7 +84,7 @@ int main()
 	a.enter();
 	b.enter();
 	matrix c;
-	c = a * b;
+	c = a + b;
 	c.show();
 	return 0;
 }
